@@ -1,0 +1,5 @@
+oauth:
+  github:
+    client_id: "afb1c8eb1131cf347b72"
+    client_secret: "8e141d4e38f71a4b96766865fde699cc483efc51"
+    redirect_uri: "http://localhost:8080/oauth/callback"

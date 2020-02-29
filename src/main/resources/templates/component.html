@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<ul id="question-list" class="list-unstyled">
+    <li>
+        <div th:each="question : ${page.objs}" class="m_media media">
+            <a th:href="@{/article/{id}(id=${question.gatoArticle.articleId})}">
+                <div class="media-left">
+                    <img th:src="${question.gatoUser.userPortrait}" class="img-rounded">
+                </div>
+                <div class="media-right">
+                    <h4 th:text="${question.gatoArticle.articleTitle}"></h4>
+                    <ul class="list-inline">
+                        <li>点击:[[${question.gatoArticle.articleViewCount}]]</li>
+                        <li>点赞:[[${question.gatoArticle.articleLikeCount}]]</li>
+                        <li>发布时间:[[${#dates.format(question.gatoArticle.articleGmtCreate, 'yyyy-MM-dd
+                            HH:mm')}]]
+                        </li>
+                    </ul>
+                </div>
+            </a>
+        </div>
+    </li>
+</ul>
+</body>
+</html>

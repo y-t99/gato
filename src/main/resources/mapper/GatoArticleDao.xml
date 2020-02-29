@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.yuanyuan.community.community.mapper.dao.GatoArticleDao">
+
+    <resultMap type="cn.yuanyuan.community.community.mapper.entity.GatoArticle" id="GatoArticleMap">
+        <result property="articleId" column="article_id" jdbcType="LONG INTEGER"/>
+        <result property="articleTitle" column="article_title" jdbcType="VARCHAR"/>
+        <result property="articleDescription" column="article_description" jdbcType="VARCHAR"/>
+        <result property="articleGmtCreate" column="article_gmt_create" jdbcType="TIMESTAMP"/>
+        <result property="articleGmtModified" column="article_gmt_modified" jdbcType="TIMESTAMP"/>
+        <result property="articleViewCount" column="article_view_count" jdbcType="INTEGER"/>
+        <result property="articleLikeCount" column="article_like_count" jdbcType="INTEGER"/>
+        <result property="articleTag" column="article_tag" jdbcType="VARCHAR"/>
+        <result property="articleAuthor" column="article_author" jdbcType="INTEGER"/>
+        <result property="field2" column="field_2" jdbcType="INTEGER"/>
+        <result property="field3" column="field_3" jdbcType="INTEGER"/>
+        <result property="field4" column="field_4" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="GatoArticleMap">
+        select
+          article_id, article_title, article_description, article_gmt_create, article_gmt_modified, article_view_count, article_like_count, article_tag, article_author, field_2, field_3, field_4
+        from gato.gato_article
+        where article_id = #{articleId}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="GatoArticleMap">
+        select
+          article_id, article_title, article_description, article_gmt_create, article_gmt_modified, article_view_count, article_like_count, article_tag, article_author, field_2, field_3, field_4
+        from gato.gato_article
+        limit #{offset}, #{limit}
+    </select>
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryAll" resultMap="GatoArticleMap">
+        select
+          article_id, article_title, article_description, article_gmt_create, article_gmt_modified, article_view_count, article_like_count, article_tag, article_author, field_2, field_3, field_4
+        from gato.gato_article
+        <where>
+            <if test="articleId != null">
+                and article_id = #{articleId}
+            </if>
+            <if test="articleTitle != null and articleTitle != ''">
+                and article_title = #{articleTitle}
+            </if>
+            <if test="articleDescription != null and articleDescription != ''">
+                and article_description = #{articleDescription}
+            </if>
+            <if test="articleGmtCreate != null">
+                and article_gmt_create = #{articleGmtCreate}
+            </if>
+            <if test="articleGmtModified != null">
+                and article_gmt_modified = #{articleGmtModified}
+            </if>
+            <if test="articleViewCount != null">
+                and article_view_count = #{articleViewCount}
+            </if>
+            <if test="articleLikeCount != null">
+                and article_like_count = #{articleLikeCount}
+            </if>
+            <if test="articleTag != null and articleTag != ''">
+                and article_tag = #{articleTag}
+            </if>
+            <if test="articleAuthor != null">
+                and article_author = #{articleAuthor}
+            </if>
+            <if test="field2 != null">
+                and field_2 = #{field2}
+            </if>
+            <if test="field3 != null">
+                and field_3 = #{field3}
+            </if>
+            <if test="field4 != null">
+                and field_4 = #{field4}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="articleId" useGeneratedKeys="true">
+        insert into gato.gato_article(article_title, article_description, article_gmt_create, article_gmt_modified, article_view_count, article_like_count, article_tag, article_author, field_2, field_3, field_4)
+        values (#{articleTitle}, #{articleDescription}, #{articleGmtCreate}, #{articleGmtModified}, #{articleViewCount}, #{articleLikeCount}, #{articleTag}, #{articleAuthor}, #{field2}, #{field3}, #{field4})
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update gato.gato_article
+        <set>
+            <if test="articleTitle != null and articleTitle != ''">
+                article_title = #{articleTitle},
+            </if>
+            <if test="articleDescription != null and articleDescription != ''">
+                article_description = #{articleDescription},
+            </if>
+            <if test="articleGmtCreate != null">
+                article_gmt_create = #{articleGmtCreate},
+            </if>
+            <if test="articleGmtModified != null">
+                article_gmt_modified = #{articleGmtModified},
+            </if>
+            <if test="articleViewCount != null">
+                article_view_count = #{articleViewCount},
+            </if>
+            <if test="articleLikeCount != null">
+                article_like_count = #{articleLikeCount},
+            </if>
+            <if test="articleTag != null and articleTag != ''">
+                article_tag = #{articleTag},
+            </if>
+            <if test="articleAuthor != null">
+                article_author = #{articleAuthor},
+            </if>
+            <if test="field2 != null">
+                field_2 = #{field2},
+            </if>
+            <if test="field3 != null">
+                field_3 = #{field3},
+            </if>
+            <if test="field4 != null">
+                field_4 = #{field4},
+            </if>
+        </set>
+        where article_id = #{articleId}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from gato.gato_article where article_id = #{articleId}
+    </delete>
+
+</mapper>

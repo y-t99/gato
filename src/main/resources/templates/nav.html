@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<nav id="nav-top" class="navbar navbar-default">
+    <div class="container-fluid">
+        <a class="navbar-brand" th:href="@{/index}">Gato</a>
+        <form class="navbar-form navbar-left">
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="Search">
+            </div>
+            <button type="submit" class="btn btn-default">Submit</button>
+        </form>
+
+        <ul class="nav navbar-nav navbar-right">
+            <li th:if="${session.user==null}" class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                   aria-expanded="false">登录 <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li>
+                        <a href="https://github.com/login/oauth/authorize?client_id=afb1c8eb1131cf347b72&redirect_uri=http://localhost:8080/oauth/callback&scope=user&state=1">
+                            GitHub</a></li>
+                    <li><a th:href="@{/user/login}">教务系统</a></li>
+                </ul>
+            </li>
+            <li th:unless="${session.user==null}" class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                   aria-expanded="false">我 <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a th:href="@{/room}">个人空间</a></li>
+                    <li><a th:href="@{/public}">发布话题</a></li>
+                    <li><a th:href="@{/user/quit}">退出</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div><!-- /.navbar-collapse -->
+</nav>
+<nav id="nav-page" aria-label="Page navigation" class="page-nav">
+    <ul class="pagination">
+        <li>
+            <a th:if="${page.isPrevious}" href="#"
+               th:href="@{/{path}/{rows}/{currentPage}(path=${page.path},rows=${page.rows},currentPage=${page.currentPage-1})}"
+               aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+            </a>
+        </li>
+        <li th:each="num : ${page.pages}" th:class="${page.currentPage==num?'active':''}">
+            <a href="#" th:href="@{/{path}/{rows}/{num}(path=${page.path},rows=${page.rows},num=${num})}">[[${num}]]</a>
+        </li>
+        <li>
+            <a th:if="${page.isAfter}" href="#"
+               th:href="@{/{path}/{rows}/{currentPage}(path=${page.path},rows=${page.rows},currentPage=${page.currentPage+1})}"
+               aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+            </a>
+        </li>
+    </ul>
+</nav>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css"
+          th:href="@{/static/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" href="../static/css/public.css"
+          th:href="@{/static/css/public.css}"/>
+    <title>模板</title>
+</head>
+<body class="bodyBg_color">
+<div th:replace="nav :: #nav-top"/>
+
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="../static/js/jquery-3.4.1.min.js"
+        th:src="@{/static/js/jquery-3.4.1.min.js}"></script>
+<script src="../static/js/bootstrap.min.js"
+        th:src="@{/static/js/bootstrap.min.js}"></script>
+
+</body>
+</html>
