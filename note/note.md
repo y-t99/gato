@@ -187,3 +187,66 @@ public class PageDTO<T> {
 </nav>
 ```
 
+## 4、异常处理
+
+### ①github地址
+
+[github地址]([https://github.com/y-t99/springboot#%E4%B8%80springboot-%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86](https://github.com/y-t99/springboot#一springboot-异常处理))
+
+## 5、数据校验
+
+### ①github地址
+
+[github地址]([https://github.com/y-t99/springboot#%E4%BA%8C%E6%95%B0%E6%8D%AE%E6%A0%A1%E9%AA%8C%E5%AE%9E%E6%88%98](https://github.com/y-t99/springboot#二数据校验实战))
+
+[github地址二]([https://github.com/y-t99/ssm-note#%E4%BA%8Cspring%E6%95%B0%E6%8D%AE%E6%A0%A1%E9%AA%8C](https://github.com/y-t99/ssm-note#二spring数据校验))
+
+# 三、DEMO(部分)
+
+## 总览
+
+![](./image/demo-1.png) 
+![](./image/demo-2.png)
+
+![](./image/demo-3.png)
+
+![](./image/demo-4.png)
+
+![](./image/demo-5.png)
+![](./image/demo-6.png)
+
+## 1、首页部分
+
+![](./image/index-1.png)
+
+### 附
+
+分页
+
+![](./image/index-1-1.png)
+
+未登录
+
+![](./image/index-1-2.png)
+
+## 2、文章部分
+
+### ①、编辑页
+
+![](./image/article-1-1.png)
+
+![](./image/article-1-2.png)
+
+![](./image/article-1-3.png)
+
+### ②、文章浏览
+
+![](./image/article-2.png)
+
+![](./image/article-2-1.png)
+
+![](./image/article-3.png)
+
+# 四、计划
+
+先把能文章编辑，浏览，回复这几个功能做好再想其他的。然后做好后，因为愿望是能够上线使用，所以我们要对这几个功能的异常处理，数据合法性、业务逻辑都进行加强，不要随随便便就报错，也不要随随便便被人搞，如通过程序不断像我们数据库写数据，刷点击量等等。
