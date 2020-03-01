@@ -191,15 +191,15 @@ public class PageDTO<T> {
 
 ### ①github地址
 
-[github地址]([https://github.com/y-t99/springboot#%E4%B8%80springboot-%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86](https://github.com/y-t99/springboot#一springboot-异常处理))
+[github地址](https://github.com/y-t99/springboot#%E4%B8%80springboot-%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86](https://github.com/y-t99/springboot#一springboot-异常处理)
 
 ## 5、数据校验
 
 ### ①github地址
 
-[github地址]([https://github.com/y-t99/springboot#%E4%BA%8C%E6%95%B0%E6%8D%AE%E6%A0%A1%E9%AA%8C%E5%AE%9E%E6%88%98](https://github.com/y-t99/springboot#二数据校验实战))
+[github地址](https://github.com/y-t99/springboot#%E4%BA%8C%E6%95%B0%E6%8D%AE%E6%A0%A1%E9%AA%8C%E5%AE%9E%E6%88%98](https://github.com/y-t99/springboot#二数据校验实战)
 
-[github地址二]([https://github.com/y-t99/ssm-note#%E4%BA%8Cspring%E6%95%B0%E6%8D%AE%E6%A0%A1%E9%AA%8C](https://github.com/y-t99/ssm-note#二spring数据校验))
+[github地址二](https://github.com/y-t99/ssm-note#%E4%BA%8Cspring%E6%95%B0%E6%8D%AE%E6%A0%A1%E9%AA%8C](https://github.com/y-t99/ssm-note#二spring数据校验)
 
 # 三、DEMO(部分)
 
