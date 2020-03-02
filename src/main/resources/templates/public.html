@@ -10,6 +10,16 @@
           th:href="@{/static/css/bootstrap.min.css}"/>
     <link rel="stylesheet" href="../static/css/public.css"
           th:href="@{/static/css/public.css}"/>
+    <link rel="stylesheet" href="../static/css/editormd.css"
+          th:href="@{/static/css/editormd.css}"/>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="../static/js/jquery-3.4.1.min.js"
+            th:src="@{/static/js/jquery-3.4.1.min.js}"></script>
+    <script src="../static/js/bootstrap.min.js"
+            th:src="@{/static/js/bootstrap.min.js}"></script>
+    <script src="../static/js/editormd.min.js"
+            th:src="@{/static/js/editormd.min.js}"></script>
     <title>发布</title>
 </head>
 <body class="bodyBg_color">
@@ -19,25 +29,36 @@
         <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
             <form th:action="@{/article}" method="post">
                 <input type="hidden" name="_method" value="put" th:if="${question!=null}"/>
-                <input type="hidden" name="articleId" th:value="${question.gatoArticle.articleId}" th:if="${question!=null}">
+                <input type="hidden" name="articleId" th:value="${question.gatoArticle.articleId}"
+                       th:if="${question!=null}">
                 <h3><img src="../static/assets/image/pencil.svg" th:src="@{/static/assets/image/pencil.svg}"
                          alt="" width="32" height="32" title="pencil">发起</h3>
                 <hr/>
                 <!--<div class="alert alert-success" role="alert" th:if="${article_msg!=null}">[[${article_msg}]]</div>-->
                 <label for="article_title">标题</label>
                 <div class="form-group">
-                    <input name="articleTitle" type="text" class="form-control" id="article_title" aria-describedby=""
+                    <input name="articleTitle" type="text" class="form-control" id="article_title" autocomplete="off"
                            placeholder="文章标题" th:value="${question!=null?question.gatoArticle.articleTitle:''}">
                 </div>
-                <label for="article_topic">内容</label>
-                <div class="input-group">
-                    <textarea class="form-control" rows="3">[[${question!=null?question.gatoArticle.articleDescription:''}]]</textarea>
+                <label for="article_description">内容</label>
+                <div class="input-group " id="question-editor">
+                    <textarea id="article_description" style="display:none;" name="articleDescription"
+                              class="form-control" rows="3">[[${question!=null?question.gatoArticle.articleDescription:''}]]</textarea>
                 </div>
+
                 <br/>
                 <label for="article_topic">标签</label>
                 <div class="form-group">
-                    <input name="articleTag" type="text" class="form-control" id="article_topic" aria-describedby=""
+                    <input name="articleTag" type="text" class="form-control" id="article_topic" autocomplete="off"
                            placeholder="文章标签" th:value="${question!=null?question.gatoArticle.articleTag:''}">
+                    <div id="question-tags" class="question-tags">
+                        <a href="javascript:void(0);" class="question-tag-click" th:each="tag : ${gatoTag.tags}"
+                           onclick="selectTag(this)">
+                        <span class="label label-info question-tag">
+                            <span class="glyphicon glyphicon-tags"></span>[[${tag}]]
+                        </span>
+                        </a>
+                    </div>
                 </div>
                 <button type="submit" class="btn btn-info publish btn-lg">发布</button>
             </form>
@@ -52,11 +73,29 @@
         </div>
     </div>
 </div>
-<!-- Optional JavaScript -->
-<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="../static/js/jquery-3.4.1.min.js"
-        th:src="@{/static/js/jquery-3.4.1.min.js}"></script>
-<script src="../static/js/bootstrap.min.js"
-        th:src="@{/static/js/bootstrap.min.js}"></script>
+<script>
+    // $("#article_topic").focus(()=>{
+    //     $("#question-tags").toggleClass("hidden");
+    // });
+    function selectTag(e) {
+        let tag = $($(e).find(".question-tag")[0]).text().trim();
+        let text = $("#article_topic").val();
+        $("#article_topic").val(text + " " + tag);
+    }
+</script>
+<script type="text/javascript">
+    $(function () {
+        var editor = editormd("question-editor", {
+            // width  : "100%",
+            height: "600px",
+            path: "/js/lib/",
+            delay: 0,
+            placeholder: "请输入内容",
+            imageUpload: true,          // Enable/disable upload
+            imageFormats: ["jpg", "jpeg", "gif", "png", "bmp", "webp"],
+            imageUploadURL: "/file/upload",             // Upload url
+        });
+    });
+</script>
 </body>
 </html>

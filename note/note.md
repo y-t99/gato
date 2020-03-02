@@ -1,16 +1,18 @@
-资料
-
-[github oauth](https://github.com/settings/apps/new)
+# 笔记知识点很多来自码匠老师的视频教程
 
 # 一、知识点
 
 ## 1、Building OAuth Apps
 
-### 流程
+### 资料
+
+流程：
 
 [阮一峰老师的文章](http://www.ruanyifeng.com/blog/2019/04/github-oauth.html)
 
 [官网文章](https://developer.github.com/apps/building-oauth-apps/authorizing-oauth-apps/)
+
+申请地址：[github oauth](https://github.com/settings/apps/new)
 
 ### 时序图
 
@@ -197,23 +199,53 @@ public class PageDTO<T> {
 
 ### ①github地址
 
-[github地址]([https://github.com/y-t99/springboot#%E4%BA%8C%E6%95%B0%E6%8D%AE%E6%A0%A1%E9%AA%8C%E5%AE%9E%E6%88%98](https://github.com/y-t99/springboot#二数据校验实战))
+[github地址](https://github.com/y-t99/springboot#二数据校验实战)
 
-[github地址二]([https://github.com/y-t99/ssm-note#%E4%BA%8Cspring%E6%95%B0%E6%8D%AE%E6%A0%A1%E9%AA%8C](https://github.com/y-t99/ssm-note#二spring数据校验))
+[github地址二](https://github.com/y-t99/ssm-note#二spring数据校验)
 
-# 三、DEMO(部分)
+## 6、日志
+
+### ①配置
+
+```properties
+#	默认打印级别
+logging.level.root=info
+# 	指定包打印级别
+logging.level.life.majiang.community.mapper=debug
+#	日志文件打印位置
+logging.file=logs/xxx.log
+#	日志文件大小
+logging.file.max-size=xxxMB
+#	日志保存保留，如保留最近三天
+logging.file.max-history=3
+```
+
+## 7、教程和博客链接
+
+### ①MD编辑器
+
+[editor.md github](https://github.com/pandao/editor.md)
+
+### ②UCloud SDK
+
+[UCloud/UFild](https://docs.ucloud.cn/storage_cdn/ufile/bill/new)
+
+[UCloud SDK github](https://github.com/ucloud/ufile-sdk-java)
+
+### ③项目部署
+
+[javaweb项目部署到服务器](https://www.bilibili.com/video/av66317648/?p=1)
+
+[小程序服务器部署](https://www.bilibili.com/video/av66317648/?p=8)
+
+# 三、DEMO
 
 ## 总览
 
 ![](./image/demo-1.png) 
-![](./image/demo-2.png)
 
-![](./image/demo-3.png)
-
-![](./image/demo-4.png)
-
-![](./image/demo-5.png)
-![](./image/demo-6.png)
+![](./image/article-new-1.png)
+![](./image/article-new-2.png)
 
 ## 1、首页部分
 
@@ -221,32 +253,46 @@ public class PageDTO<T> {
 
 ### 附
 
-分页
-
-![](./image/index-1-1.png)
-
 未登录
 
 ![](./image/index-1-2.png)
 
-## 2、文章部分
+## 2、可有的功能点
 
-### ①、编辑页
-
-![](./image/article-1-1.png)
+### ①编辑页
 
 ![](./image/article-1-2.png)
 
 ![](./image/article-1-3.png)
 
-### ②、文章浏览
+### ②功能点
 
-![](./image/article-2.png)
+*  **文章查找**
 
-![](./image/article-2-1.png)
+# 四、总结
 
-![](./image/article-3.png)
+## 1、demo完成度
 
-# 四、计划
+`demo`完成了视频的基本要求，**二级评论**、**通知页面**、**项目部署**和一些其他小细节没有完成。
 
-先把能文章编辑，浏览，回复这几个功能做好再想其他的。然后做好后，因为愿望是能够上线使用，所以我们要对这几个功能的异常处理，数据合法性、业务逻辑都进行加强，不要随随便便就报错，也不要随随便便被人搞，如通过程序不断像我们数据库写数据，刷点击量等等。
+完成的有
+
+* markdown的支持
+* ucloud/ufile的支持
+* 文章标签功能
+* 一些基本的业务逻辑
+
+## 2、学习收获
+
+知识远远不够用，这里提一下后端需要学的
+
+* 部署服务器时，操作需要用到linux系统(当然可以用window，但是太low了，也是错误的方式)。
+* docker还有一些协调后端合作的软件使用必不可少。
+* 服务器方面（这次很简单很简单的使用了一点点点点点ucloud下的对象存储服务）。
+* Spring家族的功能需要多多了解。
+* 哎。。。
+
+## 3、最后的想法
+
+		视频已经给社区的基本框架，感觉需要考虑的就是，加强后端的业务处理。然后的话，需要前端辛苦，因为这个页面跟原视频很大不同的话，可以欺骗我们自己这不是完完全全抄的。想着做后台，这样也是区别跟视频的不同。
+		但是，我感觉知识真的不够，真的很不愿意做一个虚有其表的东西来欺骗自己。

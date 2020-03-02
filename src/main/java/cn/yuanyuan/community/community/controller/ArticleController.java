@@ -4,7 +4,6 @@ import cn.yuanyuan.community.community.dto.GatoCommentDTO;
 import cn.yuanyuan.community.community.dto.PageDTO;
 import cn.yuanyuan.community.community.dto.QuestionDTO;
 import cn.yuanyuan.community.community.dto.ResultDTO;
-import cn.yuanyuan.community.community.mapper.GatoCommentMapper;
 import cn.yuanyuan.community.community.po.GatoArticle;
 import cn.yuanyuan.community.community.po.GatoComment;
 import cn.yuanyuan.community.community.po.GatoUser;
@@ -50,7 +49,7 @@ public class ArticleController {
         GatoUser user = (GatoUser) session.getAttribute("user");
         article.setArticleAuthor(user.getUserId());
         articleService.addArticle(article);
-        return "public";
+        return "forward:/public";
     }
 
     /**
@@ -149,5 +148,4 @@ public class ArticleController {
         model.addAttribute("question", questionDTO);
         return "public";
     }
-
 }

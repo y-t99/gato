@@ -5,6 +5,7 @@ import cn.yuanyuan.community.community.po.GatoComment;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
@@ -12,7 +13,7 @@ import java.util.List;
  * @author yuanyuan
  * #create 2020-02-27-10:53
  */
-@Component
+@Repository
 public interface GatoCommentMapper {
     @Insert("insert into gato.gato_comment(comment_user_id, comment_content_id, comment_content, comment_gmt_create_time, comment_gmt_modified_time, comment_type)" +
             "        values (#{commentUserId}, #{commentContentId}, #{commentContent}, #{commentGmtCreateTime}, #{commentGmtModifiedTime}, #{commentType})")

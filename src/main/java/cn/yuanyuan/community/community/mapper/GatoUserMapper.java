@@ -5,12 +5,13 @@ import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 /**
  * @author yuanyuan
  * #create 2020-02-21-4:23
  */
-@Component
+@Repository
 public interface GatoUserMapper {
     @Select("SELECT * FROM gato_user WHERE user_id=#{id}")
     GatoUser selectById(Long id);

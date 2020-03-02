@@ -5,6 +5,7 @@ import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
@@ -12,7 +13,7 @@ import java.util.List;
  * @author yuanyuan
  * #create 2020-02-23-10:31
  */
-@Component
+@Repository
 public interface GatoArticleMapper {
     @Insert("insert into gato.gato_article(article_title, article_description, article_gmt_create, article_gmt_modified, article_tag,article_author)" +
             "values (#{articleTitle}, #{articleDescription}, #{articleGmtCreate}, #{articleGmtModified}, #{articleTag}, #{articleAuthor})")
@@ -42,4 +43,6 @@ public interface GatoArticleMapper {
     void increViewCount(Long articleId);
     @Update("update gato.gato_article set article_comment_count=article_comment_count+1 where article_id=#{articleId}")
     void increCommentCount(Long articleId);
+    @Select("select * FROM  gato.gato_article WHERE article_tag REGEXP #{condition} limit 0,10")
+    List<GatoArticle> queryByTags(String condition);
 }

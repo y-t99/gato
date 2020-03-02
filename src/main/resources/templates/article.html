@@ -10,6 +10,8 @@
           th:href="@{/static/css/bootstrap.min.css}"/>
     <link rel="stylesheet" href="../static/css/public.css"
           th:href="@{/static/css/public.css}"/>
+    <link rel="stylesheet" href="../static/css/editormd.preview.css"
+          th:href="@{/static/css/editormd.preview.css}"/>
     <title>文章详情</title>
 </head>
 <body class="bodyBg_color">
@@ -28,9 +30,18 @@
                 </li>
             </ul>
             <hr/>
-            <p>
-                [[${question.gatoArticle.articleDescription}]]
-            </p>
+            <div id="article-view">
+                <!-- Server-side output Markdown text -->
+                <textarea style="display:none;">[[${question.gatoArticle.articleDescription}]]</textarea>
+            </div>
+            <hr/>
+            <div id="question-tags" class="question-tags">
+                <a href="javascript:void(0);" class="question-tag-click" th:each="tag : ${question.tags}" th:if="${tag.trim()!=''}">
+                        <span class="label label-info question-tag">
+                            <span class="glyphicon glyphicon-tags"></span>[[${tag.trim()}]]
+                        </span>
+                </a>
+            </div>
             <hr/>
             <ul class="list-inline">
                 <li th:if="${session.user!=null && session.user.userId==question.gatoArticle.articleAuthor}">
@@ -41,13 +52,14 @@
             </ul>
             <div class="article-reply">
                 <br/>
-                <h3>回复区</h3>
+                <h3>回复区  <span class="label label-default" id="replyNum" name="replyNum"></span></h3>
                 <input type="hidden" name="articleId" id="articleId" th:value="${question.gatoArticle.articleId}">
-                <ul id="comments" name="comment" class="list-inline">
+                <ul id="comments" name="comment" class="media-list">
                     <hr/>
                     <li id="comment" name="comment">
+                        <!--一级评论-->
                         <div class="media">
-                            <div class="media-left media-middle">
+                            <div class="media-left">
                                 <a href="#">
                                     <img id="commentPortrait" class="media-object" src="">
                                 </a>
@@ -56,8 +68,8 @@
                                 <h4 id="commentUserNick" class="media-heading"></h4>
                                 <p id="commentContent"></p>
                                 <ul class="list-inline" style="margin-top: 5px;">
-                                    <li>点赞</li>
-                                    <li>评论</li>
+                                    <li><a href="#"><span class="glyphicon glyphicon-thumbs-up"></span></a></li>
+                                    <li ><a href="javascript:void(0);" onclick="reply(this)" data-id="1"><span class="glyphicon glyphicon-comment" aria-hidden="true"></span></a></li>
                                     <li>时间:<span id="commentGmtCreateTime"></span></li>
                                 </ul>
                             </div>
@@ -82,6 +94,7 @@
                     </ul>
                 </nav>
             </div>
+            <hr/>
             <div th:if="${session.user!=null}" id="article-comment" class="article-comment">
                 <div class="media">
                     <div class="media-left">
@@ -95,7 +108,7 @@
                             <input type="hidden" id="commentContentId" name="commentContentId" th:value="${question.gatoArticle.articleId}">
                             <input type="hidden" id="commentType" name="commentType" th:value="1">
                             <div class="form-group">
-                                <textarea name="commentContent" class="form-control" rows="3"></textarea>
+                                <textarea id="commentContent2" name="commentContent" class="form-control" rows="3"></textarea>
                             </div>
                             <button type="button" class="btn btn-info publish" id="commentSubmit">评论</button>
                         </form>
@@ -104,7 +117,13 @@
             </div>
         </div>
         <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
-
+            <hr/>
+            <h4>相关问题</h4>
+            <ul class="list-unstyled abouts">
+                <li th:each="article : ${question.abouts}"><a th:href="@{/article/{id}(id=${article.articleId})}">
+                    [[${article.articleTitle}]]
+                </a></li>
+            </ul>
         </div>
     </div>
 </div>
@@ -116,6 +135,16 @@
         th:src="@{/static/js/bootstrap.min.js}"></script>
 <script src="../static/js/article.js"
         th:src="@{/static/js/article.js}"></script>
-
+<script src="../static/js/editormd.js"
+        th:src="@{/static/js/editormd.js}"></script>
+<script src="../static/js/lib/marked.min.js"
+        th:src="@{/static/js/lib/marked.min.js}"></script>
+<script src="../static/js/lib/prettify.min.js"
+        th:src="@{/static/js/lib/prettify.min.js}"></script>
+<script type="text/javascript">
+    $(function() {
+        var testView = editormd.markdownToHTML("article-view", {});
+    });
+</script>
 </body>
 </html>

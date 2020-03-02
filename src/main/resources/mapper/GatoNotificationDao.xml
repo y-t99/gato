@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.yuanyuan.community.community.po.dao.GatoNotificationDao">
+
+    <resultMap type="cn.yuanyuan.community.community.po.GatoNotification" id="GatoNotificationMap">
+        <result property="notificationId" column="notification_id" jdbcType="OTHER"/>
+        <result property="notificationNotifier" column="notification_notifier" jdbcType="OTHER"/>
+        <result property="notificationReceiver" column="notification_receiver" jdbcType="OTHER"/>
+        <result property="notificationOuterId" column="notification_outer_id" jdbcType="OTHER"/>
+        <result property="notificationGmtCreat" column="notification_gmt_creat" jdbcType="OTHER"/>
+        <result property="notificationStatus" column="notification_status" jdbcType="INTEGER"/>
+        <result property="notificationName" column="notification_name" jdbcType="VARCHAR"/>
+        <result property="field1" column="field_1" jdbcType="INTEGER"/>
+        <result property="field2" column="field_2" jdbcType="INTEGER"/>
+        <result property="field3" column="field_3" jdbcType="INTEGER"/>
+        <result property="field4" column="field_4" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="GatoNotificationMap">
+        select
+          notification_id, notification_notifier, notification_receiver, notification_outer_id, notification_gmt_creat, notification_status, notification_name, field_1, field_2, field_3, field_4
+        from gato.gato_notification
+        where notification_id = #{notificationId}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="GatoNotificationMap">
+        select
+          notification_id, notification_notifier, notification_receiver, notification_outer_id, notification_gmt_creat, notification_status, notification_name, field_1, field_2, field_3, field_4
+        from gato.gato_notification
+        limit #{offset}, #{limit}
+    </select>
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryAll" resultMap="GatoNotificationMap">
+        select
+          notification_id, notification_notifier, notification_receiver, notification_outer_id, notification_gmt_creat, notification_status, notification_name, field_1, field_2, field_3, field_4
+        from gato.gato_notification
+        <where>
+            <if test="notificationId != null">
+                and notification_id = #{notificationId}
+            </if>
+            <if test="notificationNotifier != null">
+                and notification_notifier = #{notificationNotifier}
+            </if>
+            <if test="notificationReceiver != null">
+                and notification_receiver = #{notificationReceiver}
+            </if>
+            <if test="notificationOuterId != null">
+                and notification_outer_id = #{notificationOuterId}
+            </if>
+            <if test="notificationGmtCreat != null">
+                and notification_gmt_creat = #{notificationGmtCreat}
+            </if>
+            <if test="notificationStatus != null">
+                and notification_status = #{notificationStatus}
+            </if>
+            <if test="notificationName != null and notificationName != ''">
+                and notification_name = #{notificationName}
+            </if>
+            <if test="field1 != null">
+                and field_1 = #{field1}
+            </if>
+            <if test="field2 != null">
+                and field_2 = #{field2}
+            </if>
+            <if test="field3 != null">
+                and field_3 = #{field3}
+            </if>
+            <if test="field4 != null">
+                and field_4 = #{field4}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="notificationId" useGeneratedKeys="true">
+        insert into gato.gato_notification(notification_notifier, notification_receiver, notification_outer_id, notification_gmt_creat, notification_status, notification_name, field_1, field_2, field_3, field_4)
+        values (#{notificationNotifier}, #{notificationReceiver}, #{notificationOuterId}, #{notificationGmtCreat}, #{notificationStatus}, #{notificationName}, #{field1}, #{field2}, #{field3}, #{field4})
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update gato.gato_notification
+        <set>
+            <if test="notificationNotifier != null">
+                notification_notifier = #{notificationNotifier},
+            </if>
+            <if test="notificationReceiver != null">
+                notification_receiver = #{notificationReceiver},
+            </if>
+            <if test="notificationOuterId != null">
+                notification_outer_id = #{notificationOuterId},
+            </if>
+            <if test="notificationGmtCreat != null">
+                notification_gmt_creat = #{notificationGmtCreat},
+            </if>
+            <if test="notificationStatus != null">
+                notification_status = #{notificationStatus},
+            </if>
+            <if test="notificationName != null and notificationName != ''">
+                notification_name = #{notificationName},
+            </if>
+            <if test="field1 != null">
+                field_1 = #{field1},
+            </if>
+            <if test="field2 != null">
+                field_2 = #{field2},
+            </if>
+            <if test="field3 != null">
+                field_3 = #{field3},
+            </if>
+            <if test="field4 != null">
+                field_4 = #{field4},
+            </if>
+        </set>
+        where notification_id = #{notificationId}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from gato.gato_notification where notification_id = #{notificationId}
+    </delete>
+
+</mapper>

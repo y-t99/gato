@@ -82,7 +82,7 @@ public class PageDTO<T> {
         }else {
             isPrevious=true;
         }
-        if (currentPage.equals(totalPage)){
+        if (currentPage.equals(totalPage) || totalPage==0){
             isAfter=false;
         }else{
             isAfter=true;

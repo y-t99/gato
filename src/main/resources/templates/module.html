@@ -15,7 +15,34 @@
 <body class="bodyBg_color">
 <div th:replace="nav :: #nav-top"/>
 
-
+<!--二级评论-->
+<div class="collapse" id="reply-panel-1">
+    <div class="col-md-12 .col-xs-12 .col-md-12 .col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="media">
+                    <div class="media-left">
+                        <a href="#">
+                            <img class="media-object" src="../static/assets/image/example.jpg" alt="...">
+                        </a>
+                    </div>
+                    <div class="media-body">
+                        <h4 class="media-heading"></h4>
+                        ...
+                    </div>
+                </div>
+            </div>
+            <div class="panel-footer">
+                <form style="padding-bottom:35px;">
+                    <div class="form-group">
+                        <textarea name="commentContent" class="form-control" rows="3"></textarea>
+                    </div>
+                    <button type="button" class="btn btn-info publish">回复</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="../static/js/jquery-3.4.1.min.js"

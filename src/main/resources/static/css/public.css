@@ -42,3 +42,27 @@ a,a:hover{
 a:hover div{
     color: #999999;
 }
+.question-tags{
+    margin: 10px 0;
+}
+.question-tag{
+    font-size: 14px;
+    margin: 5px;
+}
+.question-tag span{
+    margin-right:10px;
+}
+.abouts a{
+    /*color: cornflowerblue !important;*/
+}
+.abouts li{
+    padding: 3px !important;
+    font-size: 16px;
+    white-space: nowrap;  /*强制不换行*/
+    -o-text-overflow: ellipsis;    /* Opera 9-10 */
+    text-overflow: ellipsis;  /*文本溢出时,显示省略号 IE, WebKit (Safari, Chrome), Firefox 7, Opera 11*/
+    overflow: hidden; /*内容超出,隐藏元素 */
+}
+.abouts a:hover{
+    text-decoration: underline !important;
+}
