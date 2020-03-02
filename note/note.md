@@ -193,15 +193,21 @@ public class PageDTO<T> {
 
 ### ①github地址
 
-[github地址]([https://github.com/y-t99/springboot#%E4%B8%80springboot-%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86](https://github.com/y-t99/springboot#一springboot-异常处理))
+[github地址](https://github.com/y-t99/springboot#%E4%B8%80springboot-%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86](https://github.com/y-t99/springboot#一springboot-异常处理)
 
 ## 5、数据校验
 
 ### ①github地址
 
+<<<<<<< HEAD
 [github地址](https://github.com/y-t99/springboot#二数据校验实战)
 
 [github地址二](https://github.com/y-t99/ssm-note#二spring数据校验)
+=======
+[github地址](https://github.com/y-t99/springboot#%E4%BA%8C%E6%95%B0%E6%8D%AE%E6%A0%A1%E9%AA%8C%E5%AE%9E%E6%88%98](https://github.com/y-t99/springboot#二数据校验实战)
+
+[github地址二](https://github.com/y-t99/ssm-note#%E4%BA%8Cspring%E6%95%B0%E6%8D%AE%E6%A0%A1%E9%AA%8C](https://github.com/y-t99/ssm-note#二spring数据校验)
+>>>>>>> 94ca2d57c7c70b260bc61c1f5e31193c790a23ed
 
 ## 6、日志
 
@@ -294,5 +300,9 @@ logging.file.max-history=3
 
 ## 3、最后的想法
 
+<<<<<<< HEAD
 		视频已经给社区的基本框架，感觉需要考虑的就是，加强后端的业务处理。然后的话，需要前端辛苦，因为这个页面跟原视频很大不同的话，可以欺骗我们自己这不是完完全全抄的。想着做后台，这样也是区别跟视频的不同。
 		但是，我感觉知识真的不够，真的很不愿意做一个虚有其表的东西来欺骗自己。
+=======
+先把能文章编辑，浏览，回复这几个功能做好再想其他的。然后做好后，因为愿望是能够上线使用，所以我们要对这几个功能的异常处理，数据合法性、业务逻辑都进行加强，不要随随便便就报错，也不要随随便便被人搞，如通过程序不断像我们数据库写数据，刷点击量等等。
+>>>>>>> 94ca2d57c7c70b260bc61c1f5e31193c790a23ed
